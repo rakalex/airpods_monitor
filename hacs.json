@@ -1,0 +1,8 @@
+{
+  "name": "AirPods Monitor",
+  "domains": [
+    "sensor"
+  ],
+  "homeassistant": "2024.1.0",
+  "render_readme": false
+}

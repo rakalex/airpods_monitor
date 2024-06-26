@@ -1,0 +1,11 @@
+{
+  "domain": "airpods_monitor",
+  "name": "AirPods Monitor",
+  "version": "1.0.0",
+  "documentation": "https://example.com",
+  "dependencies": [],
+  "codeowners": [],
+  "requirements": [
+    "bleak"
+  ]
+}
