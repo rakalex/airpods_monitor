@@ -7,7 +7,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .sensor import get_data
+from .airpods import get_data
 
 _LOGGER = logging.getLogger(__name__)
 
