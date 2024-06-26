@@ -2,12 +2,20 @@
 import logging
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.const import STATE_UNKNOWN
+from homeassistant.helpers.entity_platform import async_add_entities
 
 _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Set up the AirPods Monitor sensor."""
-    coordinator = hass.data["airpods_monitor"][discovery_info["entry_id"]]
+    coordinator = hass.data["airpods_monitor"]
+
+    async_add_entities([AirPodsSensor(coordinator)], True)
+
+async def async_setup_entry(hass, entry, async_add_entities):
+    """Set up AirPods Monitor sensor from a config entry."""
+    coordinator = hass.data["airpods_monitor"][entry.entry_id]
+
     async_add_entities([AirPodsSensor(coordinator)], True)
 
 class AirPodsSensor(SensorEntity):
