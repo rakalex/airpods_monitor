@@ -2,6 +2,7 @@ from bleak import discover
 from asyncio import new_event_loop, set_event_loop, get_event_loop
 from binascii import hexlify
 from datetime import datetime
+from time import time_ns  # Importing time_ns
 
 UPDATE_DURATION = 1
 MIN_RSSI = -60
