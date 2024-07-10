@@ -1,6 +1,5 @@
 from bleak import discover
 from asyncio import new_event_loop, set_event_loop, get_event_loop
-from time import time_ns
 from binascii import hexlify
 from datetime import datetime
 
@@ -60,7 +59,7 @@ def get_data():
     if not raw:
         return dict(status=0, model="AirPods not found")
 
-    flip: bool = is_flipped(raw)
+    flip = is_flipped(raw)
 
     if chr(raw[7]) == 'e':
         model = "AirPodsPro"
@@ -85,9 +84,9 @@ def get_data():
     case_status = (100 if status_tmp == 10 else (status_tmp * 10 + 5 if status_tmp <= 10 else -1))
 
     charging_status = int("" + chr(raw[14]), 16)
-    charging_left: bool = (charging_status & (0b00000010 if flip else 0b00000001)) != 0
-    charging_right: bool = (charging_status & (0b00000001 if flip else 0b00000010)) != 0
-    charging_case: bool = (charging_status & 0b00000100) != 0
+    charging_left = (charging_status & (0b00000010 if flip else 0b00000001)) != 0
+    charging_right = (charging_status & (0b00000001 if flip else 0b00000010)) != 0
+    charging_case = (charging_status & 0b00000100) != 0
 
     return dict(
         status=1,
